@@ -8,8 +8,9 @@ const app = express();
 app.use(express.json());
 // app hace uso de cors
 //app.use(cors());
-app.use('/api',require('./ruters/employees'));
-// app pone a escuchar al servidor el el puerto en este caso es el 3000.
+//app.use('/api',require('./ruters/employees'));
+app.use('/api', require('./ruters/users'));
+// app pone a escuchar al servidor el el puerto )en este caso es el 3000.
 app.listen(3000,(err) => {
 if (err) {
     console.log('Server error');
