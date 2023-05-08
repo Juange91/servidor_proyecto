@@ -1,17 +1,15 @@
-// Se hace uso del esquema de users.
-const { UserSchema } = require('../models/users');
-// Se crea una constante la cual recibe una peticion de tipo get donde enviara los datos del usuario 
-// de la tabla agents segun el documento y tipo de documento.
+const conexion = require('../data_base/mysql')
 const getUsers = (req, res) => {
-    const data = req.params
-    console.log(data);
-    UserSchema.findAll()
-        .then(result => {
-            res.json(result);
-        })
-        .catch(error => {
-            console.log('Error ' + error);
-        })
+    let sql = 'select * from users'
+    conexion.query(sql,(err, rows, fields)=>{
+        if(err) throw err; 
+          
+        else{
+            res.json(rows)
+
+        }
+    }
+    )
 };
 
 // Se exportan las constantes
